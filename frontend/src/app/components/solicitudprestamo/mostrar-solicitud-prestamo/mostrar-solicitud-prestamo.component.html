@@ -1,0 +1,63 @@
+<p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+      <div class="flex justify-content-between flex-wrap">
+        <h3 class="ml-4">
+          Registro de Solicitudes de Préstamo
+        </h3>
+        <div class="mt-2 mr-2">
+          <a 
+            pButton 
+            pRipple
+            label="Crear Solicitud" 
+            icon="pi pi-plus"
+            class="bg-cyan-600"
+            [routerLink]="['/solicitudprestamo/nuevo']">
+          </a>
+        </div>
+      </div>
+    </ng-template>
+    <p>
+      <p-table [value]="solicitudes">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ID Cliente</th>
+            <th>ID Empleado</th>
+            <th>Fecha de Solicitud</th>
+            <th>Monto</th>
+            <th>Estado</th>
+            <th>ID Tipo de Préstamo</th>
+            <th class="flex justify-content-center flex-wrap">Acciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-solicitud>
+          <tr>
+            <td>{{ solicitud.cliente_Id }}</td>
+            <td>{{ solicitud.empleado_Id }}</td>
+            <td>{{ solicitud.fechaSolicitud | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ solicitud.monto | currency }}</td>
+            <td>{{ solicitud.estadoSolicitud }}</td>
+            <td>{{ solicitud.tipoPrestamo_Id }}</td>
+            <td>
+              <a 
+                pButton 
+                pRipple
+                icon="pi pi-sync"
+                severity="warning"
+                class="mr-1"
+                [routerLink]="['/solicitudprestamo/actualizar', solicitud.id]">
+              </a>
+              <button 
+                pButton 
+                pRipple
+                severity="danger"
+                icon="pi pi-trash"
+                class="mr-1"
+                (click)="eliminar(solicitud.id)">
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p>
+  </p-card>
+  

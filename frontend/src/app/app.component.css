@@ -1,0 +1,54 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Contenedor principal */
+main {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "header header header header header"
+        "aside section section section section"
+        "footer footer footer footer footer";
+    height: 98vh;
+}
+
+/* Encabezado */
+header {
+    grid-area: header;
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Menú lateral */
+aside {
+    grid-area: aside;
+    background-color: transparent;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 5px;
+    height: 100%;
+}
+
+/* Sección principal */
+section {
+    grid-area: section;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Pie de página */
+footer {
+    grid-area: footer;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px;
+}

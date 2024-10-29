@@ -1,0 +1,59 @@
+<p-card class="w-12 h-full">
+    <ng-template pTemplate="header">
+      <div class="flex justify-content-between flex-wrap">
+        <h3 class="ml-4">
+          Registro de Tipos de Préstamo
+        </h3>
+        <div class="mt-2 mr-2">
+          <a 
+            pButton 
+            pRipple
+            label="Crear Tipo de Préstamo" 
+            icon="pi pi-plus"
+            class="bg-cyan-600"
+            [routerLink]="['/tipoprestamo/nuevo']">
+          </a>
+        </div>
+      </div>
+    </ng-template>
+    <p>
+      <p-table [value]="tipoprestamos">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Interés (%)</th>
+            <th>Plazo (meses)</th>
+            <th class="flex justify-content-center flex-wrap">Acciones</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-tipoprestamo>
+          <tr>
+            <td>{{ tipoprestamo.nombre }}</td>
+            <td>{{ tipoprestamo.descripcion }}</td>
+            <td>{{ tipoprestamo.interes }}</td>
+            <td>{{ tipoprestamo.plazo }}</td>
+            <td>
+              <a 
+                pButton 
+                pRipple
+                icon="pi pi-sync"
+                severity="warning"
+                class="mr-1"
+                [routerLink]="['/tipoprestamo/actualizar', tipoprestamo.id]">
+              </a>
+              <button 
+                pButton 
+                pRipple
+                severity="danger"
+                icon="pi pi-trash"
+                class="mr-1"
+                (click)="eliminar(tipoprestamo.id)">
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p>
+  </p-card>
+  
